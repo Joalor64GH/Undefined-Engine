@@ -29,6 +29,23 @@ import openfl.Assets;
 
 using StringTools;
 
+class Fixer
+{
+	public static function initPlayerSettings()
+	{
+		if (FlxG.save.data.newInput == null)
+			FlxG.save.data.newInput = true;
+
+		if (FlxG.save.data.downscroll == null)
+			FlxG.save.data.downscroll = false;
+
+		if (FlxG.save.data.dfjk == null)
+			FlxG.save.data.dfjk = false;
+
+		FlxG.save.bind('undefinedengine', 'joalor64gh');
+	}
+}
+
 class TitleState extends MusicBeatState
 {
 	static var initialized:Bool = false;
@@ -57,7 +74,7 @@ class TitleState extends MusicBeatState
 
 		super.create();
 
-		FlxG.save.bind('funkin', 'ninjamuffin99');
+		Fixer.initPlayerSettings();
 
 		Highscore.load();
 

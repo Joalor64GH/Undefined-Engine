@@ -123,6 +123,8 @@ class PlayState extends MusicBeatState
 	// how big to stretch the pixel art assets
 	public static var daPixelZoom:Float = 6;
 
+	public static var theFunne:Bool = true;
+
 	var inCutscene:Bool = false;
 
 	#if desktop
@@ -160,23 +162,6 @@ class PlayState extends MusicBeatState
 
 		switch (SONG.song.toLowerCase())
 		{
-			case 'tutorial':
-				dialogue = ["Hey you're pretty cute.", 'Use the arrow keys to keep up \nwith me singing.'];
-			case 'bopeebo':
-				dialogue = [
-					'HEY!',
-					"You think you can just sing\nwith my daughter like that?",
-					"If you want to date her...",
-					"You're going to have to go \nthrough ME first!"
-				];
-			case 'fresh':
-				dialogue = ["Not too shabby boy.", ""];
-			case 'dadbattle':
-				dialogue = [
-					"gah you think you're hot stuff?",
-					"If you can beat me here...",
-					"Only then I will even CONSIDER letting you\ndate my daughter!"
-				];
 			case 'senpai':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('senpai/senpaiDialogue'));
 			case 'roses':
@@ -229,7 +214,7 @@ class PlayState extends MusicBeatState
 
 		switch (SONG.song.toLowerCase())
 		{
-                        case 'spookeez' | 'monster' | 'south': 
+                        case 'spookeez' | 'south' | 'monster': 
                         {
                                 curStage = 'spooky';
 	                          halloweenLevel = true;
@@ -246,7 +231,7 @@ class PlayState extends MusicBeatState
 
 		                  isHalloween = true;
 		          }
-		          case 'pico' | 'blammed' | 'philly': 
+		          case 'pico' | 'philly' | 'blammed': 
                         {
 		                  curStage = 'philly';
 
@@ -288,7 +273,7 @@ class PlayState extends MusicBeatState
 		                  var street:FlxSprite = new FlxSprite(-40, streetBehind.y).loadGraphic(Paths.image('philly/street'));
 	                          add(street);
 		          }
-		          case 'milf' | 'satin-panties' | 'high':
+		          case 'satin-panties' | 'high' | 'milf':
 		          {
 		                  curStage = 'limo';
 		                  defaultCamZoom = 0.90;
@@ -577,9 +562,7 @@ class PlayState extends MusicBeatState
 				gfVersion = 'gf-car';
 			case 'mall' | 'mallEvil':
 				gfVersion = 'gf-christmas';
-			case 'school':
-				gfVersion = 'gf-pixel';
-			case 'schoolEvil':
+			case 'school' | 'schoolEvil':
 				gfVersion = 'gf-pixel';
 		}
 
@@ -734,7 +717,7 @@ class PlayState extends MusicBeatState
 		add(healthBar);
 
 		scoreTxt = new FlxText(healthBarBG.x + healthBarBG.width - 190, healthBarBG.y + 30, 0, "", 20);
-		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT);
+		scoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		add(scoreTxt);
 
@@ -1505,10 +1488,7 @@ class PlayState extends MusicBeatState
 						camFollow.x = boyfriend.getMidpoint().x - 300;
 					case 'mall':
 						camFollow.y = boyfriend.getMidpoint().y - 200;
-					case 'school':
-						camFollow.x = boyfriend.getMidpoint().x - 200;
-						camFollow.y = boyfriend.getMidpoint().y - 200;
-					case 'schoolEvil':
+					case 'school' | 'schoolEvil':
 						camFollow.x = boyfriend.getMidpoint().x - 200;
 						camFollow.y = boyfriend.getMidpoint().y - 200;
 				}
