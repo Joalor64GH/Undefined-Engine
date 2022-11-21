@@ -16,7 +16,7 @@ class Paths
 		currentLevel = name.toLowerCase();
 	}
 
-	sstatic public function file(file:String)
+	static public function file(file:String)
 	{
 		var path = 'assets/$file';
 		if (currentLevel != null && OpenFlAssets.exists('$currentLevel:$path'))
@@ -27,22 +27,22 @@ class Paths
 
 	inline static public function txt(key:String)
 	{
-		return getPath('data/$key.txt');
+		return file('data/$key.txt');
 	}
 
 	inline static public function xml(key:String)
 	{
-		return getPath('data/$key.xml');
+		return file('data/$key.xml');
 	}
 
 	inline static public function json(key:String)
 	{
-		return getPath('data/$key.json');
+		return file('data/$key.json');
 	}
 
 	static public function sound(key:String)
 	{
-		return getPath('sounds/$key.$SOUND_EXT');
+		return file('sounds/$key.$SOUND_EXT');
 	}
 
 	inline static public function soundRandom(key:String, min:Int, max:Int)
@@ -52,7 +52,7 @@ class Paths
 
 	inline static public function music(key:String)
 	{
-		return getPath('music/$key.$SOUND_EXT');
+		return file('music/$key.$SOUND_EXT');
 	}
 
 	inline static public function voices(song:String)
@@ -67,7 +67,7 @@ class Paths
 
 	inline static public function image(key:String)
 	{
-		return getPath('images/$key.png');
+		return file('images/$key.png');
 	}
 
 	inline static public function font(key:String)
