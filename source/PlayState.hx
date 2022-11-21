@@ -43,7 +43,6 @@ import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
 import Character;
 import LLua;
-import LuaScript;
 
 using StringTools;
 

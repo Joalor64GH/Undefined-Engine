@@ -11,7 +11,7 @@ class Paths
 	inline public static var SOUND_EXT = #if web "mp3" #else "ogg" #end;
 	inline public static var VIDEO_EXT = "mp4";
 
-	static var currentLevel:String;
+	public static var currentLevel:String;
 
 	static public function setCurrentLevel(name:String)
 	{
