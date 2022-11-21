@@ -1,5 +1,6 @@
 package;
 
+#if MODS_ALLOWED
 import sys.FileSystem;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
@@ -35,3 +36,4 @@ class ModsMenuState extends MusicBeatState {
         super.create();
     }
 }
+#end

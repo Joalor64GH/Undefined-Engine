@@ -62,7 +62,7 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
-		#if polymod
+		#if MODS_ALLOWED
 		polymod.Polymod.init({modRoot: "mods", dirs: ['Template'], framework: OPENFL});
 		#end
 

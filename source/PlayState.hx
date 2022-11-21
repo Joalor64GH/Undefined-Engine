@@ -41,6 +41,9 @@ import lime.utils.Assets;
 import openfl.display.BlendMode;
 import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
+import llua.*;
+import LLua;
+import LuaScript;
 
 using StringTools;
 

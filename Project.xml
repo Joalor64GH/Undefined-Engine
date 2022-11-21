@@ -43,11 +43,17 @@
 	<assets path="assets/fonts" embed='true'/>
 	<assets path="assets/" rename="assets" exclude="*.ogg" if="web"/>
 	<assets path="assets/" rename="assets" exclude="*.mp3" unless="web"/>
+
+	<!--CUSTOM DEFINES-->
+	<define name="VIDEO_PLUGIN" if="web || windows" unless="32bits"/>
+	<define name="MODS_ALLOWED" if="desktop" unless="mac" />
+	<define name="LUA_EXTENSION" if="desktop" />
 	
 	<!-- <define name="PRELOAD_ALL" /> -->
 	<define name="PRELOAD_ALL" unless="web" />
 	<define name="NO_PRELOAD_ALL" unless="PRELOAD_ALL"/>
 	
+	<library name="videos"           preload="true" />
 	<section if="PRELOAD_ALL">
 		<library name="songs"    preload="true" />
 	</section>
@@ -56,9 +62,12 @@
 		<library name="songs"    preload="false" />
 	</section>
 	
+	<assets path="assets/videos"   library="videos"   if="VIDEO_PLUGIN"/>
 	<assets path="assets/songs"    library="songs"    exclude="*.ogg" if="web"/>
 	<assets path="assets/songs"    library="songs"    exclude="*.mp3" unless="web"/>
-	<assets path='assets/mods'     library="mods"     embed='false'   unless="mobile"/>
+	<section if="MODS_ALLOWED">
+	        <assets path='assets/mods'     library="mods"     embed='false'   unless="mobile"/>
+	</section>
 
 	<assets path='art/readme.txt' rename='do NOT readme.txt' />
 	
@@ -75,7 +84,10 @@
 	<!--In case you want to use the ui package-->
 	<haxelib name="flixel-ui" />
 	<haxelib name="faxe" if='switch'/>
-	<haxelib name="polymod"/>
+	<haxelib name="hxCodec" if="VIDEO_PLUGIN"/>
+	<haxelib name="polymod" if="MODS_ALLOWED"/>
+	<haxelib name="linc_luajit" if="LUA_EXTENSION"/>
+	<haxelib name="hxvm-luajit" if="LUA_EXTENSION"/>
 	<haxelib name="discord_rpc" if="desktop"/>
 	<haxelib name="hxcpp-debug-server" if="desktop"/>
 
