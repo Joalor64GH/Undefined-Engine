@@ -21,7 +21,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		var daBf:String = '';
 		switch (daStage)
 		{
-			case 'school || schoolEvil':
+			case 'school' | 'schoolEvil':
 				stageSuffix = '-pixel';
 				daBf = 'bf-pixel-dead';
 			default:

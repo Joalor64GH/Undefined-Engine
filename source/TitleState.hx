@@ -264,28 +264,13 @@ class TitleState extends MusicBeatState
 		}
 		#end
 
-		var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
-
-		if (gamepad != null)
-		{
-			if (gamepad.justPressed.START)
-				pressedEnter = true;
-
-			#if switch
-			if (gamepad.justPressed.B)
-				pressedEnter = true;
-			#end
-		}
-
 		if (pressedEnter && !transitioning && skippedIntro)
 		{
-			#if !switch
 			// If it's Friday according to da clock
 			if (Date.now().getDay() == 5)
 			{
 				// Unlock Friday medal
 			}
-			#end
 
 			titleText.animation.play('press');
 
