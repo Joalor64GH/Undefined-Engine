@@ -27,6 +27,31 @@ class CoolUtil
 		return daList;
 	}
 
+	public static function coolStringFile(path:String):Array<String>
+	{
+		var daList:Array<String> = path.trim().split('\n');
+
+		for (i in 0...daList.length)
+		{
+			daList[i] = daList[i].trim();
+		}
+
+		return daList;
+	}
+
+	public static inline function coolerTextFile(path:String, daString:String = ''):String
+	{
+		#if MODS_ALLOWED
+		if (FileSystem.exists(path))
+			daString = File.getContent(path).trim();
+		#else
+		if (Assets.exists(path))
+			daString = Assets.getText(path).trim();
+		#end
+
+		return daString;
+	}
+
 	public static function numberArray(max:Int, ?min = 0):Array<Int>
 	{
 		var dumbArray:Array<Int> = [];
