@@ -1,11 +1,13 @@
 package;
 
+import flixel.FlxG;
 import lime.utils.Assets;
 
 using StringTools;
 
 class CoolUtil
 {
+	public static var modList:Array<String> = sys.FileSystem.readDirectory("assets/mods");
 	public static var difficultyArray:Array<String> = ['EASY', "NORMAL", "HARD"];
 
 	public static function difficultyString():String
