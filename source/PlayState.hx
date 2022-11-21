@@ -42,7 +42,6 @@ import openfl.display.BlendMode;
 import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
 import Character;
-import llua.*;
 import LLua;
 import LuaScript;
 
