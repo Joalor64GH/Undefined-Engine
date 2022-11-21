@@ -16,73 +16,43 @@ class Paths
 		currentLevel = name.toLowerCase();
 	}
 
-	static function getPath(file:String, type:AssetType, library:Null<String>)
+	sstatic public function file(file:String)
 	{
-		if (library != null)
-			return getLibraryPath(file, library);
+		var path = 'assets/$file';
+		if (currentLevel != null && OpenFlAssets.exists('$currentLevel:$path'))
+			return '$currentLevel:$path';
 
-		if (currentLevel != null)
-		{
-			var levelPath = getLibraryPathForce(file, currentLevel);
-			if (OpenFlAssets.exists(levelPath, type))
-				return levelPath;
-
-			levelPath = getLibraryPathForce(file, "shared");
-			if (OpenFlAssets.exists(levelPath, type))
-				return levelPath;
-		}
-
-		return getPreloadPath(file);
+		return path;
 	}
 
-	static public function getLibraryPath(file:String, library = "preload")
+	inline static public function txt(key:String)
 	{
-		return if (library == "preload" || library == "default") getPreloadPath(file); else getLibraryPathForce(file, library);
+		return getPath('data/$key.txt');
 	}
 
-	inline static function getLibraryPathForce(file:String, library:String)
+	inline static public function xml(key:String)
 	{
-		return '$library:assets/$library/$file';
+		return getPath('data/$key.xml');
 	}
 
-	inline static function getPreloadPath(file:String)
+	inline static public function json(key:String)
 	{
-		return 'assets/$file';
+		return getPath('data/$key.json');
 	}
 
-	inline static public function file(file:String, type:AssetType = TEXT, ?library:String)
+	static public function sound(key:String)
 	{
-		return getPath(file, type, library);
+		return getPath('sounds/$key.$SOUND_EXT');
 	}
 
-	inline static public function txt(key:String, ?library:String)
+	inline static public function soundRandom(key:String, min:Int, max:Int)
 	{
-		return getPath('data/$key.txt', TEXT, library);
+		return sound(key + FlxG.random.int(min, max));
 	}
 
-	inline static public function xml(key:String, ?library:String)
+	inline static public function music(key:String)
 	{
-		return getPath('data/$key.xml', TEXT, library);
-	}
-
-	inline static public function json(key:String, ?library:String)
-	{
-		return getPath('data/$key.json', TEXT, library);
-	}
-
-	static public function sound(key:String, ?library:String)
-	{
-		return getPath('sounds/$key.$SOUND_EXT', SOUND, library);
-	}
-
-	inline static public function soundRandom(key:String, min:Int, max:Int, ?library:String)
-	{
-		return sound(key + FlxG.random.int(min, max), library);
-	}
-
-	inline static public function music(key:String, ?library:String)
-	{
-		return getPath('music/$key.$SOUND_EXT', MUSIC, library);
+		return getPath('music/$key.$SOUND_EXT');
 	}
 
 	inline static public function voices(song:String)
@@ -95,9 +65,9 @@ class Paths
 		return 'songs:assets/songs/${song.toLowerCase()}/Inst.$SOUND_EXT';
 	}
 
-	inline static public function image(key:String, ?library:String)
+	inline static public function image(key:String)
 	{
-		return getPath('images/$key.png', IMAGE, library);
+		return getPath('images/$key.png');
 	}
 
 	inline static public function font(key:String)
@@ -105,13 +75,13 @@ class Paths
 		return 'assets/fonts/$key';
 	}
 
-	inline static public function getSparrowAtlas(key:String, ?library:String)
+	inline static public function getSparrowAtlas(key:String)
 	{
-		return FlxAtlasFrames.fromSparrow(image(key, library), file('images/$key.xml', library));
+		return FlxAtlasFrames.fromSparrow(image(key), file('images/$key.xml'));
 	}
 
-	inline static public function getPackerAtlas(key:String, ?library:String)
+	inline static public function getPackerAtlas(key:String)
 	{
-		return FlxAtlasFrames.fromSpriteSheetPacker(image(key, library), file('images/$key.txt', library));
+		return FlxAtlasFrames.fromSpriteSheetPacker(image(key), file('images/$key.txt'));
 	}
 }
