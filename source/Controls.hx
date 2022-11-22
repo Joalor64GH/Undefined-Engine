@@ -497,7 +497,6 @@ class Controls extends FlxActionSet
 			Control.PAUSE => [START],
 			Control.RESET => [Y]
 		]);
-		#else
 		addGamepadLiteral(id, [
 			//Swap A and B for switch
 			Control.ACCEPT => [B],
