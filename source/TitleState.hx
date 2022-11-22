@@ -264,6 +264,18 @@ class TitleState extends MusicBeatState
 		}
 		#end
 
+		var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
+
+		if (gamepad != null)
+		{
+			if (gamepad.justPressed.START)
+				pressedEnter = true;
+
+			if (gamepad.justPressed.B)
+				pressedEnter = true;
+		}
+
+
 		if (pressedEnter && !transitioning && skippedIntro)
 		{
 			// If it's Friday according to da clock
