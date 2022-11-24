@@ -46,7 +46,7 @@ class StoryMenuState extends MusicBeatState
 	];
 
 	var weekNames:Array<String> = [
-		"",
+		"How to Funk",
 		"Daddy Dearest",
 		"Spooky Month",
 		"PICO",
