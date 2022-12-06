@@ -134,11 +134,6 @@ class ModPaths
 	private static final SOUND_EXT = Paths.SOUND_EXT;
 	private static final VIDEO_EXT = Paths.VIDEO_EXT;
 
-	inline static public function modIconImage(key:String, mod:String)
-	{
-		return file('assets/$mod/_polymod_icon.png', mod);
-	}
-
 	inline static public function getModTxt(key:String, ?mod:String)
 	{
 		return file('data/$key.txt', mod);
@@ -216,7 +211,7 @@ class ModPaths
 
 	inline static public function checkMod(mod:String)
 	{
-		return openfl.utils.Assets.exists('assets/mods/$mod/_polymod_meta.json'); // THIS IS MANDATORY
+		return openfl.utils.Assets.exists('assets/mods/$mod/pack.json'); // THIS IS MANDATORY
 	}
 
 	inline static public function getModSparrowAtlas(key:String, ?mod:String)

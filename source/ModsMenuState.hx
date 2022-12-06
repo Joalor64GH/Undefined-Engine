@@ -9,8 +9,10 @@ import flixel.addons.transition.FlxTransitionableState;
 import haxe.Resource;
 import flixel.text.FlxText;
 
-class ModsMenuState extends MusicBeatState {
-    override public function create() {
+class ModsMenuState extends MusicBeatState 
+{
+    override public function create() 
+    {
         FlxTransitionableState.defaultTransIn = new TransitionData(TransitionType.TILES, FlxColor.BLACK, 0.35);
 	    FlxTransitionableState.defaultTransOut = new TransitionData(TransitionType.TILES, FlxColor.BLACK, 0.35);
 
