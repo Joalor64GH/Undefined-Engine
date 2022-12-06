@@ -26,6 +26,10 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.app.Application;
 import openfl.Assets;
+#if MODS_ALLOWED
+import sys.FileSystem;
+import sys.io.File;
+#end
 
 using StringTools;
 
@@ -63,7 +67,18 @@ class TitleState extends MusicBeatState
 	override public function create():Void
 	{
 		#if MODS_ALLOWED
-		polymod.Polymod.init({modRoot: "assets/mods", dirs: ['Template'], framework: OPENFL});
+		if (sys.FileSystem.exists('assets/mods/')) {
+			var folders:Array<String> = [];
+			for (file in sys.FileSystem.readDirectory('assets/mods/')) {
+				var path = haxe.io.Path.join(['assets/mods/', file]);
+				if (sys.FileSystem.isDirectory(path)) {
+					folders.push(file);
+				}
+			}
+			if(folders.length > 0) {
+				polymod.Polymod.init({modRoot: "assets/mods", dirs: folders});
+			}
+		}
 		#end
 
 		PlayerSettings.init();
